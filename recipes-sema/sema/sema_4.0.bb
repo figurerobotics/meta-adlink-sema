@@ -9,8 +9,9 @@ LICENSE = "CLOSED"
 
 inherit module
 
-SRCREV = "b0acc4c7ade3bec25b3bab833f8de221254b53f7"
-SRC_URI = "git://github.com/ADLINK/sema-linux.git;branch=sema-bmc;protocol=http \
+SRCBRANCH = "sema-bmc"
+SRCREV = "108561baeb48cd655c661879eeb1c00f8f3ad627"
+SRC_URI = "git://github.com/ADLINK/sema-linux.git;branch=${SRCBRANCH};protocol=http \
            "
 
 SRC_URI:append ="file://Makefile"
@@ -42,14 +43,14 @@ do_compile:append() {
 do_install:append() {
 	install -d -m 0755 ${D}/lib64
 	ln -s -r ${D}/lib/ld-linux-x86-64.so.2  ${D}/lib64/ld-linux-x86-64.so.2 
-	install -d -m 0755 ${D}/usr${base_libdir}
-	install -d -m 0755 ${D}/usr${base_bindir}
-	install -m 0755 ${WORKDIR}/git/semautil ${D}/usr${base_bindir}/
-	install -m 0755 ${WORKDIR}/git/lib/libsema.so ${D}/usr${base_libdir}/
+	install -d -m 0755 ${D}${base_libdir}
+	install -d -m 0755 ${D}${base_bindir}
+	install -m 0755 ${WORKDIR}/git/semautil ${D}${base_bindir}/
+	install -m 0755 ${WORKDIR}/git/lib/libsema.so ${D}${base_libdir}/
 }
 
 
-FILES:${PN} += "/etc /lib64 /usr${base_bindir}/semautil /usr${base_libdir}/*.so"
+FILES:${PN} += "/etc /lib64 /usr${base_bindir}/semautil ${base_libdir}/*.so"
 FILES_SOLIBSDEV = ""
 do_package_qa() {
 }
