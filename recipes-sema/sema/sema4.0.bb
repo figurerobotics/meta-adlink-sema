@@ -9,9 +9,9 @@ LICENSE = "CLOSED"
 
 inherit module
 
-SRCREV = "b0acc4c7ade3bec25b3bab833f8de221254b53f7"
-SRC_URI = "git://github.com/ADLINK/sema-linux.git;branch=sema-bmc;protocol=http \
-           "
+SRCBRANCH = "bugfix/fix-bmc-driver-build-issue"
+SRCREV = "f76a537ab437e5b81d0c6167747cbec282f2e811"
+SRC_URI = "git://github.com/figurerobotics/sema-linux.git;nobranch=1;rev:${SRCREV}protocol=https"
 
 SRC_URI:append ="file://Makefile"
 
@@ -64,6 +64,5 @@ adl-bmc-i2c \
 adl-bmc-nvmem \
 adl-bmc-wdt \
 adl-bmc-hwmon \
-adl-bmc-vm \
 "
 
