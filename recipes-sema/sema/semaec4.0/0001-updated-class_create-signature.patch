@@ -1,0 +1,22 @@
+From ef23948692228d0461856daff0b0d270e93dc6be Mon Sep 17 00:00:00 2001
+From: Damien Bardon <damien.bardon@figure.ai>
+Date: Wed, 25 Sep 2024 23:53:03 +0000
+Subject: [PATCH] updated class_create signature
+
+---
+ driver/adl-ec-wdt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/driver/adl-ec-wdt.c b/driver/adl-ec-wdt.c
+index fb98f87..7cdf884 100755
+--- a/driver/adl-ec-wdt.c
++++ b/driver/adl-ec-wdt.c
+@@ -264,7 +264,7 @@ static int adl_bmc_wdt_probe(struct platform_device *pdev)
+                 return -1;
+         }
+ 
+-        class_adl_wdt = class_create(THIS_MODULE, "watchdog_adl");
++        class_adl_wdt = class_create("watchdog_adl");
+         if (IS_ERR(class_adl_wdt)) {
+                 printk("Error in Class_create\n");
+         }
